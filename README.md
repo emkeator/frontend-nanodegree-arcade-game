@@ -20,6 +20,8 @@ If you collide six times, you will lose--Darth Vader will appear!
 
 If you succeed, the Rebel Alliance will live to fight another day!
 
+**TO PLAY AGAIN:** Reload the page.
+
 May the Force be with you.
 
 
