@@ -1,4 +1,9 @@
 /* Engine.js
+ *
+ * BASED OFF UDACITY FEND SKELETON CODE FOR "FROGGER" ARCADE GAME PROJECT.
+ * Extensively customized by Emily Keator to become a "Rogue One" style
+ * arcade game. None of the characters belong to me.
+ *
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
  * render methods on your player and enemy objects (defined in your app.js).
@@ -45,18 +50,30 @@ var Engine = (function(global) {
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
-        update(dt);
-        render();
 
-        /* Set our lastTime variable which is used to determine the time delta
-         * for the next time this function is called.
-         */
-        lastTime = now;
+        //Addition by EK: assign update to the status variable.
+        var status = update(dt);
 
-        /* Use the browser's requestAnimationFrame function to call this
-         * function again as soon as the browser is able to draw another frame.
-         */
-        win.requestAnimationFrame(main);
+        //Addition by EK: check status variable, and either call loss, success,
+        //or continue to play.
+        if (status === 1) {
+          player.lose();
+        } else if (status === 2) {
+          player.success();
+        } else {
+          render();
+
+          /* Set our lastTime variable which is used to determine the time delta
+           * for the next time this function is called.
+           */
+          lastTime = now;
+
+          /* Use the browser's requestAnimationFrame function to call this
+           * function again as soon as the browser is able to draw another frame.
+           */
+          win.requestAnimationFrame(main);
+        }
+
     }
 
     /* This function does some initial setup that should only occur once,
@@ -80,7 +97,22 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+
+        //Addition by EK: return win/loss/still playing.
+        return checkWin();
+    }
+
+    //Addition by EK: new function to check for a win, loss, or continuation
+    //of game. I chose to make a separate function in case anyone desired to
+    //make further customization/I didn't want to change the base code too much.
+    function checkWin() {
+      if (player.collisionCount >= 6) {
+        return 1;
+      } else if (player.y < 73){
+        return 2;
+      } else {
+        return 0;
+      }
     }
 
     /* This is called by the update function and loops through all of the
@@ -108,12 +140,12 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/star-block.png',   // Top row is water
+                'images/star-block.png',   // Row 1 of 3 of stone
+                'images/jungle-block.png',   // Row 2 of 3 of stone
+                'images/sand-block.png',   // Row 3 of 3 of stone
+                'images/scarif-water-block.png',   // Row 1 of 2 of grass
+                'images/sand-block.png'    // Row 2 of 2 of grass
             ],
             numRows = 6,
             numCols = 5,
@@ -167,11 +199,20 @@ var Engine = (function(global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'images/stone-block.png',
-        'images/water-block.png',
-        'images/grass-block.png',
-        'images/enemy-bug.png',
-        'images/char-boy.png'
+        //Addition by EK: removed unused images/added custom Rogue one images.
+        //Stormtrooper, ATAT, Tie-Fighter from open-source ClipArt.
+        'images/sand-block.png',
+        'images/scarif-water-block.png',
+        'images/star-block.png',
+        'images/jungle-block.png',
+        'images/char-princess-leia.png',
+        'images/char-jyn-erso.png',
+        'images/char-cassian-andor.png',
+        'images/char-k2so.png',
+        'images/char-vader.png',
+        'images/enemy-stormtrooper.png',
+        'images/enemy-atat.png',
+        'images/enemy-tie-fighter.png',
     ]);
     Resources.onReady(init);
 
