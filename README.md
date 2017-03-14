@@ -8,7 +8,12 @@ characters belong to me, obviously, or I would be super rich and lying on a beac
 Instructions
 ===============================
 
-To run this game, download the zip file, then open index.html. It has only been tested in Chrome as of March '17, so
+To run this game, two options:
+  1. Download the zip file, then open index.html. 
+  OR
+  2. Go [here](https://emkeator.github.io/frontend-nanodegree-arcade-game/).
+  
+It has only been tested in Chrome as of March '17, so
 if you're running [insert other browser here] and hit a bug, my sincerest apologies.
 
 You'll be playing as one of three randomly generated characters from the Rogue One team (Jyn Erso, Cassian Andor, or
