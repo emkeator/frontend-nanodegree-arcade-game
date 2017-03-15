@@ -119,10 +119,10 @@ Player.prototype.lose = function() {
   ctx.drawImage(Resources.get('images/char-vader.png'), 200, 230);
   ctx.textAlign = "center";
   ctx.fillStyle = "#bf0300";
-  ctx.font = "60px impact";
+  ctx.font = "30px Krona One";
   ctx.fillText("YOU HAVE FAILED", ctx.canvas.width/2, 100);
   ctx.fillStyle = "#fff";
-  ctx.font = "80px impact";
+  ctx.font = "50px Krona One";
   ctx.fillText("REBEL SCUM", ctx.canvas.width/2, ctx.canvas.height - 75);
 
 }
@@ -137,10 +137,10 @@ Player.prototype.success = function() {
   ctx.drawImage(Resources.get('images/char-princess-leia.png'), 200, 230);
   ctx.textAlign = "center";
   ctx.fillStyle = "#2571bc";
-  ctx.font = "50px impact";
+  ctx.font = "30px Krona One";
   ctx.fillText("YOU HAVE BROUGHT US", ctx.canvas.width/2, 100);
   ctx.fillStyle = "#fff";
-  ctx.font = "80px impact";
+  ctx.font = "50px Krona One";
   ctx.fillText("HOPE", ctx.canvas.width/2, ctx.canvas.height - 75);
 }
 
