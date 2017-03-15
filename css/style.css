@@ -1,3 +1,32 @@
 body {
     text-align: center;
 }
+
+header {
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Krona One', sans-serif;
+  color: white;
+  letter-spacing: 0.1em;
+  font-size: 60px;
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  font-family: 'Krona One', sans-serif;
+  color: gold;
+  font-size: 15px;
+  padding: 0 5%;
+  margin: 0;
+}
+
+footer {
+  font-family: 'Krona One', sans-serif;
+  color: gold;
+  font-size: 10px;
+  padding: 0 8%;
+  margin: 5% 0 0 0;
+}
